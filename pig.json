@@ -1,0 +1,8 @@
+{
+  "name": "Pig",
+  "genes": [
+    {"name": "FeedAmount",         "value": 4.0},
+    {"name": "FeedFrequency",      "value": 5.0},
+    {"name": "ReproduceFrequency", "value": 6.0}
+  ]
+}
