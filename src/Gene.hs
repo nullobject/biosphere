@@ -3,14 +3,14 @@
 module Gene where
 
 import Data.List
-import Text.JSON.Generic
+import Text.JSON.Generic (Data)
 
 import Util (average)
 
 data Gene = Gene
   { name  :: String
   , value :: Double
-  } deriving (Data, Eq, Ord, Show, Typeable)
+  } deriving (Data, Eq, Ord, Show)
 
 buildGene :: String -> Double -> Gene
 buildGene name value = Gene {Gene.name = name, Gene.value = value}

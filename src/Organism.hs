@@ -1,9 +1,12 @@
+{-# LANGUAGE DeriveDataTypeable #-}
+
 -- An organism is a life form.
 module Organism where
 
 import Genome (Genome)
+import Text.JSON.Generic (Data)
 
-data State = Idle | Feeding | Dead deriving (Eq, Show)
+data State = Idle | Feeding | Dead deriving (Data, Eq, Show)
 
 data Organism = Organism
   { state         :: State
@@ -12,7 +15,7 @@ data Organism = Organism
   , health        :: Int
   , lastFeed      :: Int
   , lastReproduce :: Int
-  } deriving (Show)
+  } deriving (Data, Show)
 
 -- | Builds an organism from a genome.
 buildOrganism :: Genome -> Organism

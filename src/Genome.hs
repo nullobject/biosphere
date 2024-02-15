@@ -2,14 +2,14 @@
 
 module Genome where
 
-import Text.JSON.Generic ( Data, Typeable )
+import Text.JSON.Generic (Data)
 
 import Gene (Gene, mix)
 
 data Genome = Genome
   { name  :: String
   , genes :: [Gene]
-  } deriving (Data, Eq, Show, Typeable)
+  } deriving (Data, Eq, Show)
 
 buildGenome :: String -> [Gene] -> Genome
 buildGenome name genes = Genome {Genome.name = name, Genome.genes = genes}

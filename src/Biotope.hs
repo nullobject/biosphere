@@ -1,12 +1,15 @@
+{-# LANGUAGE DeriveDataTypeable #-}
+
 -- A biotope is an area of uniform environmental conditions providing a living place for a specific assemblage of plants and animals.
 module Biotope where
 
 import Organism
+import Text.JSON.Generic (Data)
 
 data Biotope = Biotope
   { food      :: Int
   , organisms :: [Organism]
-  } deriving (Show)
+  } deriving (Data, Show)
 
 -- | Builds a biotope from a list of organisms.
 buildBiotope :: [Organism] -> Biotope

@@ -1,7 +1,8 @@
-import Biotope
-import Genome
-import Organism
-import Text.JSON.Generic
+import Prelude (map, ($), IO, putStrLn, readFile)
+import Genome (cross, Genome)
+import Organism (buildOrganism)
+import Text.JSON.Generic (decodeJSON, encodeJSON)
+import Biotope (buildBiotope, step)
 
 main :: IO ()
 main = do
@@ -17,4 +18,4 @@ main = do
   let organisms = map buildOrganism genomes
   let biotope = buildBiotope organisms
 
-  print (Biotope.step biotope)
+  putStrLn $ encodeJSON $ Biotope.step biotope
