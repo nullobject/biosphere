@@ -8,13 +8,14 @@ data Biotope = Biotope
   , organisms :: [Organism]
   } deriving (Show)
 
+-- | Builds a biotope from a list of organisms.
 buildBiotope :: [Organism] -> Biotope
 buildBiotope organisms = Biotope
   { Biotope.food      = 100
   , Biotope.organisms = organisms
   }
 
--- Advances the simulation by one step.
+-- | Advances the simulation by one step.
 step :: Biotope -> Biotope
 step biotope = buildBiotope $ map Organism.step $ organisms biotope
   -- feed

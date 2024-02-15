@@ -14,6 +14,7 @@ data Organism = Organism
   , lastReproduce :: Int
   } deriving (Show)
 
+-- | Builds an organism from a genome.
 buildOrganism :: Genome -> Organism
 buildOrganism g = Organism
   { state         = Idle

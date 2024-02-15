@@ -2,7 +2,7 @@
 
 module Genome where
 
-import Text.JSON.Generic
+import Text.JSON.Generic ( Data, Typeable )
 
 import Gene (Gene, mix)
 
@@ -14,6 +14,6 @@ data Genome = Genome
 buildGenome :: String -> [Gene] -> Genome
 buildGenome name genes = Genome {Genome.name = name, Genome.genes = genes}
 
--- Crosses two genomes together to produce a third genome.
+-- | Crosses two genomes together to produce a third genome.
 cross :: Genome -> Genome -> Genome
 cross a b = buildGenome (Genome.name a) (mix (genes a) (genes b))

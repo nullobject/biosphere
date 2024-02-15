@@ -3,6 +3,7 @@ import Genome
 import Organism
 import Text.JSON.Generic
 
+main :: IO ()
 main = do
   json <- readFile "rabbit.json"
   let rabbit = decodeJSON json :: Genome
@@ -13,7 +14,7 @@ main = do
   let mutant = rabbit `cross` pig
 
   let genomes = [rabbit, rabbit, pig, pig, mutant, mutant]
-  let organisms = map (buildOrganism) genomes
+  let organisms = map buildOrganism genomes
   let biotope = buildBiotope organisms
 
-  putStrLn $ show $ Biotope.step biotope
+  print (Biotope.step biotope)
