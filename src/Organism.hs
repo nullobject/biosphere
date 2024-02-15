@@ -9,24 +9,26 @@ import Text.JSON.Generic (Data)
 data State = Idle | Feeding | Dead deriving (Data, Eq, Show)
 
 data Organism = Organism
-  { state         :: State
-  , genome        :: Genome
-  , age           :: Int
-  , health        :: Int
-  , lastFeed      :: Int
-  , lastReproduce :: Int
-  } deriving (Data, Show)
+  { state :: State,
+    genome :: Genome,
+    age :: Int,
+    health :: Int,
+    lastFeed :: Int,
+    lastReproduce :: Int
+  }
+  deriving (Data, Show)
 
 -- | Builds an organism from a genome.
 buildOrganism :: Genome -> Organism
-buildOrganism g = Organism
-  { state         = Idle
-  , genome        = g
-  , age           = 0
-  , health        = 100
-  , lastFeed      = 0
-  , lastReproduce = 0
-  }
+buildOrganism g =
+  Organism
+    { state = Idle,
+      genome = g,
+      age = 0,
+      health = 100,
+      lastFeed = 0,
+      lastReproduce = 0
+    }
 
 -- Advances the simulation by one step.
 --

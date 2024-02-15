@@ -1,8 +1,8 @@
-import Prelude (map, ($), IO, putStrLn, readFile)
-import Genome (cross, Genome)
+import Biotope (buildBiotope, step)
+import Genome (Genome, cross)
 import Organism (buildOrganism)
 import Text.JSON.Generic (decodeJSON, encodeJSON)
-import Biotope (buildBiotope, step)
+import Prelude (IO, map, putStrLn, readFile, ($))
 
 main :: IO ()
 main = do

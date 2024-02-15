@@ -2,15 +2,15 @@
 
 module Gene where
 
-import Data.List
+import Data.List (groupBy, sort)
 import Text.JSON.Generic (Data)
-
 import Util (average)
 
 data Gene = Gene
-  { name  :: String
-  , value :: Double
-  } deriving (Data, Eq, Ord, Show)
+  { name :: String,
+    value :: Double
+  }
+  deriving (Data, Eq, Ord, Show)
 
 buildGene :: String -> Double -> Gene
 buildGene name value = Gene {Gene.name = name, Gene.value = value}
@@ -22,8 +22,9 @@ averageValue :: [Gene] -> Double
 averageValue = average . map value
 
 averageGene :: [Gene] -> Gene
-averageGene xs@(x:_) = buildGene (name x) (averageValue xs)
+averageGene xs@(x : _) = buildGene (name x) (averageValue xs)
 
 mix :: [Gene] -> [Gene] -> [Gene]
 mix a b = map averageGene groups
-  where groups = groupByName (a ++ b)
+  where
+    groups = groupByName (a ++ b)
