@@ -1,11 +1,12 @@
 {-# LANGUAGE DeriveDataTypeable #-}
 
--- A biotope is an area of uniform environmental conditions providing a living place for a specific assemblage of plants and animals.
 module Biotope where
 
 import Organism (Organism, step)
 import Text.JSON.Generic (Data)
 
+-- | A biotope is an area of uniform environmental conditions providing a living
+-- place for a specific assemblage of plants and animals.
 data Biotope = Biotope
   { food :: Int,
     organisms :: [Organism]
@@ -23,6 +24,3 @@ buildBiotope organisms =
 -- | Advances the simulation by one step.
 step :: Biotope -> Biotope
 step biotope = buildBiotope $ map Organism.step $ organisms biotope
-
--- feed
--- reproduce

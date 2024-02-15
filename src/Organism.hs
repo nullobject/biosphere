@@ -1,6 +1,5 @@
 {-# LANGUAGE DeriveDataTypeable #-}
 
--- An organism is a life form.
 module Organism where
 
 import Genome (Genome)
@@ -8,6 +7,7 @@ import Text.JSON.Generic (Data)
 
 data State = Idle | Feeding | Dead deriving (Data, Eq, Show)
 
+-- | An organism is a life form.
 data Organism = Organism
   { state :: State,
     genome :: Genome,
@@ -30,7 +30,7 @@ buildOrganism g =
       lastReproduce = 0
     }
 
--- Advances the simulation by one step.
+-- | Advances the simulation by one step.
 --
 -- If the organism is idle, and the time since the last feed is >=10 then it should feed.
 --
