@@ -1,6 +1,6 @@
 {-# LANGUAGE DeriveDataTypeable #-}
 
-module Genome where
+module Genome (Genome, mkGenome, cross) where
 
 import Gene (Gene, mix)
 import Text.JSON.Generic (Data)
@@ -11,9 +11,9 @@ data Genome = Genome
   }
   deriving (Data, Eq, Show)
 
-buildGenome :: String -> [Gene] -> Genome
-buildGenome name genes = Genome {Genome.name = name, Genome.genes = genes}
+mkGenome :: String -> [Gene] -> Genome
+mkGenome name genes = Genome {Genome.name = name, Genome.genes = genes}
 
 -- | Crosses two genomes together to produce a third genome.
 cross :: Genome -> Genome -> Genome
-cross a b = buildGenome (Genome.name a ++ Genome.name b) (mix (genes a) (genes b))
+cross a b = mkGenome (Genome.name a ++ Genome.name b) (mix (genes a) (genes b))

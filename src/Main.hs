@@ -1,6 +1,6 @@
-import Biotope (buildBiotope, step)
+import Biotope (mkBiotope, step)
 import Genome (Genome, cross)
-import Organism (buildOrganism)
+import Organism (mkOrganism)
 import Text.JSON.Generic (decodeJSON, encodeJSON)
 import Prelude (IO, map, putStrLn, readFile, ($))
 
@@ -15,7 +15,7 @@ main = do
   let mutant = rabbit `cross` pig
 
   let genomes = [rabbit, rabbit, pig, pig, mutant, mutant]
-  let organisms = map buildOrganism genomes
-  let biotope = buildBiotope organisms
+  let organisms = map mkOrganism genomes
+  let biotope = mkBiotope organisms
 
   putStrLn $ encodeJSON $ Biotope.step biotope

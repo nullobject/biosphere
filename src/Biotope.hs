@@ -1,8 +1,9 @@
 {-# LANGUAGE DeriveDataTypeable #-}
 
-module Biotope where
+module Biotope (Biotope, mkBiotope, step) where
 
-import Organism (Organism, step)
+import Organism (Organism)
+import qualified Organism (step)
 import Text.JSON.Generic (Data)
 
 -- | A biotope is an area of uniform environmental conditions providing a living
@@ -14,8 +15,8 @@ data Biotope = Biotope
   deriving (Data, Show)
 
 -- | Builds a biotope from a list of organisms.
-buildBiotope :: [Organism] -> Biotope
-buildBiotope organisms =
+mkBiotope :: [Organism] -> Biotope
+mkBiotope organisms =
   Biotope
     { Biotope.food = 100,
       Biotope.organisms = organisms
@@ -23,4 +24,4 @@ buildBiotope organisms =
 
 -- | Advances the simulation by one step.
 step :: Biotope -> Biotope
-step biotope = buildBiotope $ map Organism.step $ organisms biotope
+step biotope = mkBiotope $ map Organism.step $ organisms biotope

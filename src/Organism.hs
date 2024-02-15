@@ -1,6 +1,6 @@
 {-# LANGUAGE DeriveDataTypeable #-}
 
-module Organism where
+module Organism (Organism, mkOrganism, step) where
 
 import Genome (Genome)
 import Text.JSON.Generic (Data)
@@ -19,8 +19,8 @@ data Organism = Organism
   deriving (Data, Show)
 
 -- | Builds an organism from a genome.
-buildOrganism :: Genome -> Organism
-buildOrganism g =
+mkOrganism :: Genome -> Organism
+mkOrganism g =
   Organism
     { state = Idle,
       genome = g,
@@ -33,8 +33,7 @@ buildOrganism g =
 -- | Advances the simulation by one step.
 --
 -- If the organism is idle, and the time since the last feed is >=10 then it should feed.
---
 step :: Organism -> Organism
 step organism
-  | state organism == Idle = buildOrganism $ genome organism
+  | state organism == Idle = mkOrganism $ genome organism
   | otherwise = organism
