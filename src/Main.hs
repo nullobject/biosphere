@@ -13,7 +13,6 @@ main = do
   let pig = decodeJSON json :: Genome
 
   let mutant = rabbit `cross` pig
-
   let genomes = [rabbit, rabbit, pig, pig, mutant, mutant]
   let organisms = map mkOrganism genomes
   let biotope = mkBiotope organisms
